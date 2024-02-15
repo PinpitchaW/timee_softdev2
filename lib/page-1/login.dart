@@ -1,8 +1,8 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/gestures.dart';
-// import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'dart:ui';
 // import 'package:google_fonts/google_fonts.dart';
-// import 'package:myapp/utils.dart';
+import 'package:myapp/utils.dart';
 
 // class Scene extends StatelessWidget {
 //   @override
@@ -92,8 +92,7 @@
 //                                     child: Text(
 //                                       'Welcome back',
 //                                       textAlign: TextAlign.center,
-//                                       style: SafeGoogleFont (
-//                                         'Livvic',
+//                                       style: TextStyle (
 //                                         fontSize: 50*ffem,
 //                                         fontWeight: FontWeight.w700,
 //                                         height: 1.255*ffem/fem,
@@ -129,8 +128,7 @@
 //                                     child: Text(
 //                                       'Login',
 //                                       textAlign: TextAlign.center,
-//                                       style: SafeGoogleFont (
-//                                         'Livvic',
+//                                       style: TextStyle (
 //                                         fontSize: 64*ffem,
 //                                         fontWeight: FontWeight.w700,
 //                                         height: 1.255*ffem/fem,
@@ -150,8 +148,8 @@
 //                                         margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
 //                                         child: Text(
 //                                           'Email',
-//                                           style: SafeGoogleFont (
-//                                             'Actor',
+//                                           style: TextStyle (
+                                              
 //                                             fontSize: 16*ffem,
 //                                             fontWeight: FontWeight.w400,
 //                                             height: 1.1875*ffem/fem,
@@ -178,8 +176,8 @@
 //                                           child: Center(
 //                                             child: Text(
 //                                               'sample@email.com',
-//                                               style: SafeGoogleFont (
-//                                                 'Cuprum',
+//                                               style: TextStyle (
+                                                   
 //                                                 fontSize: 16*ffem,
 //                                                 fontWeight: FontWeight.w400,
 //                                                 height: 1.375*ffem/fem,
@@ -212,8 +210,8 @@
 //                                               margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
 //                                               child: Text(
 //                                                 'Password',
-//                                                 style: SafeGoogleFont (
-//                                                   'Actor',
+//                                                 style: TextStyle (
+                                                    
 //                                                   fontSize: 16*ffem,
 //                                                   fontWeight: FontWeight.w400,
 //                                                   height: 1.1875*ffem/fem,
@@ -243,8 +241,7 @@
 //                                                     child: Center(
 //                                                       child: Text(
 //                                                         '● ● ● ● ● ●',
-//                                                         style: SafeGoogleFont (
-//                                                           'Inter',
+//                                                         style: TextStyle (
 //                                                           fontSize: 16*ffem,
 //                                                           fontWeight: FontWeight.w400,
 //                                                           height: 1.375*ffem/fem,
@@ -277,8 +274,8 @@
 //                                         child: Text(
 //                                           'Forgot Password',
 //                                           textAlign: TextAlign.right,
-//                                           style: SafeGoogleFont (
-//                                             'Actor',
+//                                           style: TextStyle (
+                                              
 //                                             fontSize: 16*ffem,
 //                                             fontWeight: FontWeight.w400,
 //                                             height: 1.2025*ffem/fem,
@@ -300,8 +297,8 @@
 //                                         child: Center(
 //                                           child: Text(
 //                                             'Login',
-//                                             style: SafeGoogleFont (
-//                                               'Actor',
+//                                             style: TextStyle (
+                                                
 //                                               fontSize: 18*ffem,
 //                                               fontWeight: FontWeight.w400,
 //                                               height: 1.2222222222*ffem/fem,
@@ -327,8 +324,8 @@
 //                         child: RichText(
 //                           textAlign: TextAlign.center,
 //                           text: TextSpan(
-//                             style: SafeGoogleFont (
-//                               'Inter',
+//                             style: TextStyle (
+                                  
 //                               fontSize: 20*ffem,
 //                               fontWeight: FontWeight.w400,
 //                               height: 1.2102272034*ffem/fem,
@@ -339,8 +336,8 @@
 //                             children: [
 //                               TextSpan(
 //                                 text: 'Don’t have an account? ',
-//                                 style: SafeGoogleFont (
-//                                   'Cuprum',
+//                                 style: TextStyle (
+                                     
 //                                   fontSize: 20*ffem,
 //                                   fontWeight: FontWeight.w400,
 //                                   height: 1.155*ffem/fem,
@@ -351,8 +348,8 @@
 //                               ),
 //                               TextSpan(
 //                                 text: 'Sign up',
-//                                 style: SafeGoogleFont (
-//                                   'Cuprum',
+//                                 style: TextStyle (
+                                     
 //                                   fontSize: 20*ffem,
 //                                   fontWeight: FontWeight.w400,
 //                                   height: 1.155*ffem/fem,
