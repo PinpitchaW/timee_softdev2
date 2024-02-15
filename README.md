@@ -15,7 +15,7 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-#use case
+## use case
 1.	Login/Sign up เพื่อเริ่มต้นใช้งานในหน้า home โดยให้ใส่ email, password
 ![image](https://github.com/PinpitchaW/timee_softdev2/assets/157129966/af50af0a-edf6-46ba-a19d-c270a3fb3842)
 ![image](https://github.com/PinpitchaW/timee_softdev2/assets/157129966/fb82887c-c068-4c27-8c44-56ce89a6ba10)
