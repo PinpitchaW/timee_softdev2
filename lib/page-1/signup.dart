@@ -1,368 +1,387 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/gestures.dart';
-// import 'dart:ui';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:myapp/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/gestures.dart';
+import 'package:myapp/utils.dart';
+import 'login.dart';
+import 'home.dart';
 
-// class Scene extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     double baseWidth = 1440;
-//     double fem = MediaQuery.of(context).size.width / baseWidth;
-//     double ffem = fem * 0.97;
-//     return Container(
-//       width: double.infinity,
-//       child: Container(
-//         // signupgHs (22:29)
-//         width: double.infinity,
-//         height: 1024*fem,
-//         decoration: BoxDecoration (
-//           color: Color(0xff9eb8d9),
-//         ),
-//         child: Stack(
-//           children: [
-//             Positioned(
-//               // rectangle3RFT (22:31)
-//               left: 142*fem,
-//               top: 151*fem,
-//               child: Align(
-//                 child: SizedBox(
-//                   width: 1156*fem,
-//                   height: 723*fem,
-//                   child: Container(
-//                     decoration: BoxDecoration (
-//                       borderRadius: BorderRadius.circular(10*fem),
-//                       border: Border.all(color: Color(0x19000000)),
-//                       color: Color(0xffffffff),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Positioned(
-//               // rectangle57e5 (22:32)
-//               left: 142*fem,
-//               top: 152*fem,
-//               child: Align(
-//                 child: SizedBox(
-//                   width: 639*fem,
-//                   height: 723*fem,
-//                   child: Container(
-//                     decoration: BoxDecoration (
-//                       border: Border.all(color: Color(0x19000000)),
-//                       color: Color(0xffe5eef9),
-//                       borderRadius: BorderRadius.only (
-//                         topLeft: Radius.circular(10*fem),
-//                         bottomLeft: Radius.circular(10*fem),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Positioned(
-//               // image1CvR (22:69)
-//               left: 142*fem,
-//               top: 246*fem,
-//               child: Align(
-//                 child: SizedBox(
-//                   width: 639*fem,
-//                   height: 621*fem,
-//                   child: Image.asset(
-//                     'assets/page-1/images/image-1.png',
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Positioned(
-//               // logintextiNy (22:33)
-//               left: 843*fem,
-//               top: 271.3181800842*fem,
-//               child: Container(
-//                 width: 395*fem,
-//                 height: 552.68*fem,
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.center,
-//                   children: [
-//                     Center(
-//                       // signupCZ3 (22:36)
-//                       child: Container(
-//                         margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 21*fem, 22.68*fem),
-//                         child: Text(
-//                           'Sign up',
-//                           textAlign: TextAlign.center,
-//                           style: SafeGoogleFont (
-//                             'Livvic',
-//                             fontSize: 64*ffem,
-//                             fontWeight: FontWeight.w700,
-//                             height: 1.255*ffem/fem,
-//                             color: Color(0xff000000),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     Container(
-//                       // textinputfieldW3w (22:39)
-//                       margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 1*fem, 9*fem),
-//                       width: 394*fem,
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: [
-//                           Container(
-//                             // label2Y5 (I22:39;1418:1240)
-//                             margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
-//                             child: Text(
-//                               'Email',
-//                               style: SafeGoogleFont (
-//                                 'Actor',
-//                                 fontSize: 16*ffem,
-//                                 fontWeight: FontWeight.w400,
-//                                 height: 1.1875*ffem/fem,
-//                                 letterSpacing: -0.32*fem,
-//                                 color: Color(0xff000000),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             // textinputXjj (I22:39;1418:1241)
-//                             padding: EdgeInsets.fromLTRB(12*fem, 12*fem, 12*fem, 14*fem),
-//                             width: double.infinity,
-//                             height: 48*fem,
-//                             decoration: BoxDecoration (
-//                               border: Border.all(color: Color(0xff000000)),
-//                               color: Color(0xffffffff),
-//                               borderRadius: BorderRadius.circular(6*fem),
-//                             ),
-//                             child: Container(
-//                               // autogroupsfosFQq (GKYdnbVu9sUSWungyQsFos)
-//                               margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 259*fem, 0*fem),
-//                               width: 111*fem,
-//                               height: double.infinity,
-//                               child: Center(
-//                                 child: Text(
-//                                   'sample@email.com',
-//                                   style: SafeGoogleFont (
-//                                     'Cuprum',
-//                                     fontSize: 16*ffem,
-//                                     fontWeight: FontWeight.w400,
-//                                     height: 1.375*ffem/fem,
-//                                     letterSpacing: -0.32*fem,
-//                                     color: Color(0xff000000),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                     Container(
-//                       // textinputfield7hw (22:38)
-//                       margin: EdgeInsets.fromLTRB(3*fem, 0*fem, 0*fem, 9*fem),
-//                       width: 390*fem,
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: [
-//                           Container(
-//                             // labelqtq (I22:38;1418:1240)
-//                             margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
-//                             child: Text(
-//                               'Password',
-//                               style: SafeGoogleFont (
-//                                 'Actor',
-//                                 fontSize: 16*ffem,
-//                                 fontWeight: FontWeight.w400,
-//                                 height: 1.1875*ffem/fem,
-//                                 letterSpacing: -0.32*fem,
-//                                 color: Color(0xff000000),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             // textinputLah (I22:38;1418:1241)
-//                             padding: EdgeInsets.fromLTRB(12*fem, 12*fem, 14.46*fem, 14*fem),
-//                             width: double.infinity,
-//                             height: 48*fem,
-//                             decoration: BoxDecoration (
-//                               border: Border.all(color: Color(0xff000000)),
-//                               color: Color(0xffffffff),
-//                               borderRadius: BorderRadius.circular(6*fem),
-//                             ),
-//                             child: Row(
-//                               crossAxisAlignment: CrossAxisAlignment.center,
-//                               children: [
-//                                 Container(
-//                                   // autogroupigbf3ED (GKYdTBta2x8PGiYAsdiGBF)
-//                                   margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 241.46*fem, 0*fem),
-//                                   width: 103*fem,
-//                                   height: double.infinity,
-//                                   child: Center(
-//                                     child: Text(
-//                                       '● ● ● ● ● ●',
-//                                       style: SafeGoogleFont (
-//                                         'Inter',
-//                                         fontSize: 16*ffem,
-//                                         fontWeight: FontWeight.w400,
-//                                         height: 1.375*ffem/fem,
-//                                         letterSpacing: -0.32*fem,
-//                                         color: Color(0xff000000),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                 ),
-//                                 Container(
-//                                   // eyeX9P (I22:38;1418:1244)
-//                                   margin: EdgeInsets.fromLTRB(0*fem, 2*fem, 0*fem, 0*fem),
-//                                   width: 19.08*fem,
-//                                   height: 14*fem,
-//                                   child: Image.asset(
-//                                     'assets/page-1/images/eye-Bgq.png',
-//                                     width: 19.08*fem,
-//                                     height: 14*fem,
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                     Container(
-//                       // textinputfieldRVf (22:60)
-//                       margin: EdgeInsets.fromLTRB(5*fem, 0*fem, 0*fem, 45*fem),
-//                       width: 390*fem,
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: [
-//                           Container(
-//                             // labelZ65 (I22:60;1418:1240)
-//                             margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 0*fem, 7*fem),
-//                             child: Text(
-//                               'Confirm password',
-//                               style: SafeGoogleFont (
-//                                 'Actor',
-//                                 fontSize: 16*ffem,
-//                                 fontWeight: FontWeight.w400,
-//                                 height: 1.1875*ffem/fem,
-//                                 letterSpacing: -0.32*fem,
-//                                 color: Color(0xff000000),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             // textinputFzV (I22:60;1418:1241)
-//                             padding: EdgeInsets.fromLTRB(12*fem, 12*fem, 14.46*fem, 14*fem),
-//                             width: double.infinity,
-//                             height: 48*fem,
-//                             decoration: BoxDecoration (
-//                               border: Border.all(color: Color(0xff000000)),
-//                               color: Color(0xffffffff),
-//                               borderRadius: BorderRadius.circular(6*fem),
-//                             ),
-//                             child: Row(
-//                               crossAxisAlignment: CrossAxisAlignment.center,
-//                               children: [
-//                                 Container(
-//                                   // autogroupka1jxe1 (GKYddBbv61xJUFyKevkA1j)
-//                                   margin: EdgeInsets.fromLTRB(0*fem, 0*fem, 241.46*fem, 0*fem),
-//                                   width: 103*fem,
-//                                   height: double.infinity,
-//                                   child: Center(
-//                                     child: Text(
-//                                       '● ● ● ● ● ●',
-//                                       style: SafeGoogleFont (
-//                                         'Inter',
-//                                         fontSize: 16*ffem,
-//                                         fontWeight: FontWeight.w400,
-//                                         height: 1.375*ffem/fem,
-//                                         letterSpacing: -0.32*fem,
-//                                         color: Color(0xff000000),
-//                                       ),
-//                                     ),
-//                                   ),
-//                                 ),
-//                                 Container(
-//                                   // eye3fT (I22:60;1418:1244)
-//                                   margin: EdgeInsets.fromLTRB(0*fem, 2*fem, 0*fem, 0*fem),
-//                                   width: 19.08*fem,
-//                                   height: 14*fem,
-//                                   child: Image.asset(
-//                                     'assets/page-1/images/eye.png',
-//                                     width: 19.08*fem,
-//                                     height: 14*fem,
-//                                   ),
-//                                 ),
-//                               ],
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                     Container(
-//                       // buttonmLZ (22:42)
-//                       margin: EdgeInsets.fromLTRB(125*fem, 0*fem, 121*fem, 95*fem),
-//                       width: double.infinity,
-//                       height: 45*fem,
-//                       decoration: BoxDecoration (
-//                         color: Color(0xff0d2847),
-//                         borderRadius: BorderRadius.circular(6*fem),
-//                       ),
-//                       child: Center(
-//                         child: Text(
-//                           'Sign up',
-//                           style: SafeGoogleFont (
-//                             'Actor',
-//                             fontSize: 18*ffem,
-//                             fontWeight: FontWeight.w400,
-//                             height: 1.2222222222*ffem/fem,
-//                             letterSpacing: -0.36*fem,
-//                             color: Color(0xffffffff),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     Center(
-//                       // alreadyhaveanaccountlogincry (22:40)
-//                       child: Container(
-//                         margin: EdgeInsets.fromLTRB(29*fem, 0*fem, 0*fem, 0*fem),
-//                         child: RichText(
-//                           textAlign: TextAlign.center,
-//                           text: TextSpan(
-//                             style: SafeGoogleFont (
-//                               'Cuprum',
-//                               fontSize: 20*ffem,
-//                               fontWeight: FontWeight.w400,
-//                               height: 1.155*ffem/fem,
-//                               color: Color(0xff000000),
-//                             ),
-//                             children: [
-//                               TextSpan(
-//                                 text: 'Already have an account? ',
-//                               ),
-//                               TextSpan(
-//                                 text: 'Login',
-//                                 style: SafeGoogleFont (
-//                                   'Cuprum',
-//                                   fontSize: 20*ffem,
-//                                   fontWeight: FontWeight.w400,
-//                                   height: 1.155*ffem/fem,
-//                                   decoration: TextDecoration.underline,
-//                                   color: Color(0xff3a69a0),
-//                                   decorationColor: Color(0xff3a69a0),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//           );
-//   }
-// }
+void main() {
+  runApp(DailyScheduleApp());
+}
+
+class DailyScheduleApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: SignupScreen(),
+    );
+  }
+}
+
+class SignupScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double fem = screenWidth / 1440;
+    double ffem = fem * 0.97;
+
+    // void clicked(){
+    //   print("object");
+    // }
+
+    // print(screenHeight);
+    // print(screenWidth*fem);
+
+    return Material( 
+      child: Container(
+        width: screenWidth*fem,
+        child: Container(
+          // main background
+          width: screenWidth*fem,
+          height: screenHeight*fem,
+          decoration: BoxDecoration(
+            color: Color(0xff9eb8d9),
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                // icon bg
+                left: 175*fem,
+                top: 90*fem,
+                child: Align(
+                  child: SizedBox(
+                    width: 1150*fem,
+                    height: 600*fem,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: Color(0x19000000)),
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                // Sign up bg
+                left: 100*fem,
+                top: 90*fem,
+                child: Align(
+                  child: SizedBox(
+                    width: 700*fem,
+                    height: 600*fem,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0x19000000)),
+                        color: Color(0xffe5eef9),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10*fem),
+                          bottomLeft: Radius.circular(10*fem),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                // text area
+                left: 300*fem,
+                top: 180*fem,
+                child: Container(
+                  width: 960*fem,
+                  height: 553*fem,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Container(
+                        // autogroupwlj7uwT (GKYPP1WCLMcAHCjdgrwLj7)
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 12*fem),
+                        width: screenWidth*fem,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              // autogroup9dy1dMf (GKYPafqS4bjjM15Jw39DY1)
+                              margin: EdgeInsets.fromLTRB(0, 72*fem, 116*fem, 0),
+                              width: 449.5*fem,
+                            ),
+                            Container(
+                              // logintext
+                              width: 394*fem,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Center(
+                                    // loginfr5 (4:49)
+                                    child: Container(
+                                      margin: EdgeInsets.fromLTRB(0, 0, 20*fem, 20*fem),
+                                      child: Text(
+                                        'Sign up',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 64 * ffem,
+                                          fontWeight: FontWeight.w700,
+                                          height: 1.255 * ffem / fem,
+                                          color: Color(0xff000000),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    // textinput1
+                                    width: screenWidth*fem,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          // labelemial
+                                          margin: EdgeInsets.fromLTRB(0, 0, 0, 7*fem),
+                                          child: Text(
+                                            'Email',
+                                            style: TextStyle(
+                                              fontSize: 16 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.1875 * ffem / fem,
+                                              letterSpacing: -0.32*fem,
+                                              color: Color(0xff000000),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          // textfieldemail
+                                          padding: EdgeInsets.fromLTRB(12*fem, 12*fem, 12*fem, 0),
+                                          margin: EdgeInsets.fromLTRB(0, 0 , 0, 20*fem),
+                                          width: screenWidth*fem,
+                                          height: 60*fem,
+                                          child: TextField(
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(),
+                                              hintText: 'sample@email.com',
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    // autogrouplet7Ywo (GKYPszfu63hikshAxDLET7)
+                                    padding: EdgeInsets.fromLTRB(0, 0, 0, 5*fem),
+                                    width: screenWidth*fem,
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
+                                          // textinput2
+                                          margin: EdgeInsets.fromLTRB(0, 0, 0, 17*fem),
+                                          width: screenWidth*fem,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                // labelpw
+                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 7*fem),
+                                                child: Text(
+                                                  'Password',
+                                                  style: TextStyle(
+                                                    fontSize: 16 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.1875 * ffem / fem,
+                                                    letterSpacing: -0.32*fem,
+                                                    color: Color(0xff000000),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                // textfieldpw
+                                                padding: EdgeInsets.fromLTRB(12*fem, 12*fem, 12*fem, 0),
+                                                width: screenWidth*fem,
+                                                height: 60*fem,
+                                                child: TextField(
+                                                  obscureText: true,
+                                                  decoration: InputDecoration(
+                                                    border: OutlineInputBorder(),
+                                                    hintText: 'Password',
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          // autogrouplet7Ywo (GKYPszfu63hikshAxDLET7)
+                                          padding: EdgeInsets.fromLTRB(0, 0, 0, 5*fem),
+                                          width: screenWidth*fem,
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              Container(
+                                                // textinput2
+                                                margin: EdgeInsets.fromLTRB(0, 0, 0, 17*fem),
+                                                width: screenWidth*fem,
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      // labelpw
+                                                      margin: EdgeInsets.fromLTRB(0, 0, 0, 7*fem),
+                                                      child: Text(
+                                                        'Confirm password',
+                                                        style: TextStyle(
+                                                          fontSize: 16 * ffem,
+                                                          fontWeight: FontWeight.w400,
+                                                          height: 1.1875 * ffem / fem,
+                                                          letterSpacing: -0.32*fem,
+                                                          color: Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      // textfieldpw
+                                                      padding: EdgeInsets.fromLTRB(12*fem, 12*fem, 12*fem, 0),
+                                                      width: screenWidth*fem,
+                                                      height: 60*fem,
+                                                      child: TextField(
+                                                        obscureText: true,
+                                                        decoration: InputDecoration(
+                                                          border: OutlineInputBorder(),
+                                                          hintText: 'Password',
+                                                        ),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+
+                                        Container(
+                                          // Sign up button
+                                          margin: EdgeInsets.fromLTRB(121*fem, 0, 120*fem, 0),
+                                          width: screenWidth*fem,
+                                          height: 45*fem,
+                                          decoration: BoxDecoration (
+                                            color: Color(0xff0d2847),
+                                            borderRadius: BorderRadius.circular(6*fem),
+                                          ),
+
+                                          child: Center(
+                                            child: ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                                              },
+                                              style: ElevatedButton.styleFrom(
+                                                padding: EdgeInsets.zero, 
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(6 * fem), 
+                                                ),
+                                                backgroundColor: Color(0xff0d2847), 
+                                              ),
+                                              child: SizedBox(
+                                                width: double.infinity, 
+                                                height: double.infinity, 
+                                                child: Center(
+                                                  child: Text(
+                                                    "Sign up",
+                                                    style: TextStyle(
+                                                      fontSize: 18 * ffem,
+                                                      fontWeight: FontWeight.w400,
+                                                      height: 1.2222222222 * ffem / fem,
+                                                      letterSpacing: -0.36*fem,
+                                                      color: Color(0xffffffff),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ),
+
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      //no acc
+                      Container(
+                        margin: EdgeInsets.fromLTRB(580*fem, 0, 0, 0),
+                        width: 700*fem,
+                        child: Center(
+                          child: Container(
+                            width: screenWidth*fem,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Already have an account? ',
+                                  style: TextStyle(
+                                    fontSize: 16 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.155 * ffem / fem,
+                                    color: Color(0xff000000),
+                                    decorationColor: Color(0xff000000),
+                                  ),
+                                ),
+                                //signupbutton
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context, MaterialPageRoute(builder: (context) => LoginScreen()),);
+                                  },
+                                  style: ButtonStyle(
+                                    textStyle: MaterialStateProperty.all<TextStyle>(
+                                      TextStyle(
+                                        fontSize: 16 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.155 * ffem / fem,
+                                        decoration: TextDecoration.underline,
+                                        color: Color(0xff3a69a0),
+                                      ),
+                                    ),
+                                  ),
+                                  child: Text('Login'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      
+                    ],
+                  ),
+                ),
+              ),
+              //pic
+              Positioned(
+                // image1ajP (21:26)
+                left: 100*fem,
+                top: 100*fem,
+                child: Align(
+                  child: SizedBox(
+                    width: 700*fem,
+                    height: 590*fem,
+                    child: Image.asset(
+                      'assets/page-1/images/image-1.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

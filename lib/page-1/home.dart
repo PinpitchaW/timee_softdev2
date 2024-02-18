@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class Scene extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +36,7 @@ class Scene extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
-                  child: Container(
+                  child: Container( //calendar con
                     width: 700,
                     height: 500, 
                     child: SingleChildScrollView(
@@ -52,6 +52,7 @@ class Scene extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 10),
+                //column1
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -65,7 +66,7 @@ class Scene extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+                    Container( //pie chart con
                       width: 500,
                       height: 400,
                       child: PieChart(
@@ -95,7 +96,7 @@ class Scene extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 10), //note button
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
@@ -112,7 +113,7 @@ class Scene extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 20), //new table button
             Expanded(
               child: Align(
                 alignment: Alignment.center,
@@ -139,7 +140,6 @@ class Scene extends StatelessWidget {
   _DataSource _getCalendarDataSource() {
     List<Appointment> appointments = <Appointment>[];
 
-
     final sleepAppointment = Appointment(
       startTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0),
       endTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
@@ -148,7 +148,6 @@ class Scene extends StatelessWidget {
     );
     appointments.add(sleepAppointment);
 
-    // Add work appointment
     final workAppointment = Appointment(
       startTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
       endTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 11, 0),
