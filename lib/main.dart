@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/gestures.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/login.dart';
+import 'package:myapp/page-1/add-new-table.dart';
 
 void main() {
   runApp(DailyScheduleApp());

@@ -5,6 +5,7 @@ import 'package:flutter/gestures.dart';
 import 'package:myapp/utils.dart';
 import 'signup.dart';
 import 'home.dart';
+import 'add-new-table.dart';
 
 void main() {
   runApp(DailyScheduleApp());
@@ -60,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                     height: 600*widthUnit,
                     child: Container(
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10*widthUnit),
                         border: Border.all(color: Color(0x19000000)),
                         color: Color(0xffffffff),
                       ),
@@ -97,7 +98,8 @@ class LoginScreen extends StatelessWidget {
                   width: 960*widthUnit,
                   height: 553*widthUnit,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         // autogroupwlj7uwT (GKYPP1WCLMcAHCjdgrwLj7)
