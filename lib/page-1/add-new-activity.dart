@@ -69,7 +69,7 @@ class _AddNewTableModalState extends State<AddNewTableModal> {
               height: 30 * heightUnit,
               margin: EdgeInsets.fromLTRB(0, 30 * heightUnit, 0, 30 * heightUnit),
               child: Text(
-                'Add new table',
+                'Add new activity',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30 * widthUnit2,
@@ -128,10 +128,8 @@ class _AddNewTableModalState extends State<AddNewTableModal> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(10 * widthUnit, 0 * heightUnit,
-                        0 * widthUnit, 30 * heightUnit),
-                    padding: EdgeInsets.fromLTRB(12 * widthUnit, 6 * heightUnit,
-                        10 * widthUnit, 6 * heightUnit),
+                    margin: EdgeInsets.fromLTRB(10 * widthUnit, 0 * heightUnit,0 * widthUnit, 30 * heightUnit),
+                    padding: EdgeInsets.fromLTRB(12 * widthUnit, 6 * heightUnit,10 * widthUnit, 6 * heightUnit),
                     width: 170 * widthUnit,
                     height: 47 * heightUnit,
                     decoration: BoxDecoration(

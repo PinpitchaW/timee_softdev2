@@ -1,174 +1,274 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/gestures.dart';
+import 'dart:ui';
+// import 'package:google_fonts/google_fonts.dart';
+import 'package:myapp/utils.dart';
 
-void main() {
-  runApp(DailyScheduleApp());
+class HistoryScreen extends StatefulWidget {
+  @override
+  _HistoryScreenState createState() => _HistoryScreenState();
 }
 
-class DailyScheduleApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Daily Schedule',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scene(),
-    );
-  }
-}
+class _HistoryScreenState extends State<HistoryScreen> {
+  String? dropdownValue;
 
-class Scene extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double widthUnit = MediaQuery.of(context).size.width / screenWidth;
+    double widthUnit2 = widthUnit * 0.97;
+    DateTime selectedDate = DateTime.now();
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Home',
+          'History',
           style: TextStyle(
-            fontSize: 40,
+            fontSize: 40 * widthUnit,
             fontWeight: FontWeight.bold,
           ),
         ),
         backgroundColor: Color(0xFF9EB8D9),
         centerTitle: true,
-        toolbarHeight: 100.0,
+        toolbarHeight: 100.0 * widthUnit,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 10),
-            Text(
-              'Today',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+       body: Column(
+        children: [
+          Expanded(
+            child: Container(
+              width: screenWidth,
+              height: screenHeight,
+              padding: EdgeInsets.fromLTRB(
+                  20 * widthUnit, 20 * widthUnit, 20 * widthUnit, 20 * widthUnit),
+              decoration: const BoxDecoration(
+                color: Color(0xfffffcf9),
               ),
-            ),
-            SizedBox(height: 10),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 700, // Fixed width
-                  height: 500, // Adjusted to match window size
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: SfCalendar(
-                      view: CalendarView.day,
-                      dataSource: _getCalendarDataSource(),
-                      timeSlotViewSettings: TimeSlotViewSettings(
-                        timeIntervalWidth: 100, // Adjust this value as needed
-                      ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20 * widthUnit, 20 * widthUnit,20 * widthUnit, 20 * widthUnit),
+                    width: double.infinity,
+                    height: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6 * widthUnit),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0 * widthUnit, 0.5 * widthUnit,30 * widthUnit, 0 * widthUnit),
+                          width: 100,
+                          height: 40,
+                          child: Text(
+                            'Select date :',
+                            style: TextStyle(
+                              fontSize: 25 * widthUnit2,
+                              fontWeight: FontWeight.w700,
+                              height: 1.155 * widthUnit2 / widthUnit,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(12 * widthUnit,
+                                13 * widthUnit, 20 * widthUnit, 12 * widthUnit),
+                            height: double.infinity,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff000000)),
+                              color: Color(0xffffffff),
+                              borderRadius: BorderRadius.circular(6 * widthUnit),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                GestureDetector(
+                                  onTap: () async {
+                                    final DateTime? pickedDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: selectedDate,
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2101),
+                                    );
+                                    if (pickedDate != null &&
+                                        pickedDate != selectedDate) {
+                                      setState(() {
+                                        selectedDate = pickedDate;
+                                      });
+                                    }
+                                  },
+                                  child: Text(
+                                    '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                                    style: TextStyle(
+                                      fontSize: 25 * widthUnit2,
+                                      fontWeight: FontWeight.w400,
+                                      height: 0.88 * widthUnit2 / widthUnit,
+                                      letterSpacing: -0.5 * widthUnit,
+                                      color: Color(0xff000000),
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                GestureDetector(
+                                  onTap: () async {
+                                    final DateTime? pickedDate = await showDatePicker(
+                                      context: context,
+                                      initialDate: selectedDate,
+                                      firstDate: DateTime(1900),
+                                      lastDate: DateTime(2101),
+                                      builder: (BuildContext context, Widget? child) {
+                                        return Theme(
+                                          data: ThemeData.light(),
+                                          child: child!,
+                                        );
+                                      },
+                                    );
+                                    if (pickedDate != null &&
+                                        pickedDate != selectedDate) {
+                                      setState(() {
+                                        selectedDate = pickedDate;
+                                      });
+                                    }
+                                  },
+                                  child: Icon(Icons.calendar_today,
+                                      size: 24 * widthUnit2,
+                                      color: Color(0xff000000)),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  
-                ),
-                SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 46.5),
-                      child: Text(
-                        'Summarize',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 500,
-                      height: 400,
-                      child: PieChart(
-                        PieChartData(
-                          sections: [
-                            PieChartSectionData(
-                              color: Colors.blue,
-                              value: 30,
-                              title: 'Sleep',
-                              radius: 180,
-                            ),
-                            PieChartSectionData(
-                              color: Colors.green,
-                              value: 20,
-                              title: 'Work',
-                              radius: 180,
-                            ),
-                            PieChartSectionData(
-                              color: Colors.orange,
-                              value: 10,
-                              title: 'Eat',
-                              radius: 180,
-                            ),
-                          ],
-                          centerSpaceRadius: 0,
-                          sectionsSpace: 0,
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0x716B6B),
-                        foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: Text('Note'),
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
-            SizedBox(height: 20),
-            
+          ),
+            Container(
+              // graphPQ1 (37:450)
+              width: double.infinity,
+              height: 363.5 * widthUnit,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    // autogrouperlvveq (GKYcVoKCKo1RiAvhxoErLV)
+                    padding: EdgeInsets.fromLTRB(0 * widthUnit, 0 * widthUnit,
+                        113 * widthUnit, 0 * widthUnit),
+                    height: double.infinity,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          // autogroupcea14W9 (GKYcCZJvaof7tiFfsAcEa1)
+                          margin: EdgeInsets.fromLTRB(0 * widthUnit,
+                              0 * widthUnit, 37 * widthUnit, 11 * widthUnit),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                // summarizeCMT (37:453)
+                                margin: EdgeInsets.fromLTRB(
+                                    0 * widthUnit,
+                                    0 * widthUnit,
+                                    0 * widthUnit,
+                                    39.5 * widthUnit),
+                                child: Text(
+                                  'Summarize',
+                                  style: TextStyle(
+                                    fontSize: 50 * widthUnit2,
+                                    fontWeight: FontWeight.w700,
+                                    height: 1.255 * widthUnit2 / widthUnit,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                // graph6xd (37:454)
+                                width: 249.88 * widthUnit,
+                                height: 250 * widthUnit,
+                                child: Image.asset(
+                                  'assets/page-1/images/graph-jGR.png',
+                                  width: 249.88 * widthUnit,
+                                  height: 250 * widthUnit,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          // sleep75work17eat8DnM (37:452)
+                          margin: EdgeInsets.fromLTRB(0 * widthUnit,
+                              0 * widthUnit, 0 * widthUnit, 37.5 * widthUnit),
+                          constraints: BoxConstraints(
+                            maxWidth: 96 * widthUnit,
+                          ),
+                          child: Text(
+                            'Sleep 75%\nWork  17%\nEat     8%\n',
+                            style: TextStyle(
+                              fontSize: 25 * widthUnit2,
+                              fontWeight: FontWeight.w400,
+                              height: 1.155 * widthUnit2 / widthUnit,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // autogrouppyghuv5 (GKYcJZ8w1qxGcSKALLpyGh)
+                    width: 769 * widthUnit,
+                    height: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          // notef8Z (37:459)
+                          margin: EdgeInsets.fromLTRB(1 * widthUnit,
+                              0 * widthUnit, 0 * widthUnit, 30.5 * widthUnit),
+                          child: Text(
+                            'Note',
+                            style: TextStyle(
+                              fontSize: 50 * widthUnit2,
+                              fontWeight: FontWeight.w700,
+                              height: 1.255 * widthUnit2 / widthUnit,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          // autogroup7kbtyf3 (GKYcPDfpuYQVqZFS2p7KbT)
+                          padding: EdgeInsets.fromLTRB(26 * widthUnit,
+                              18 * widthUnit, 26 * widthUnit, 18 * widthUnit),
+                          width: double.infinity,
+                          height: 270 * widthUnit,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xff000000)),
+                            color: Color(0xffffffff),
+                            borderRadius: BorderRadius.circular(5 * widthUnit),
+                          ),
+                          child: Text(
+                            'Did great today!!!',
+                            style: TextStyle(
+                              fontSize: 25 * widthUnit2,
+                              fontWeight: FontWeight.w400,
+                              height: 1.155 * widthUnit2 / widthUnit,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
-        ),
+
       ),
     );
-  }
-
-  _DataSource _getCalendarDataSource() {
-    List<Appointment> appointments = <Appointment>[];
-
-    // Add sleep appointment
-    final sleepAppointment = Appointment(
-      startTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0),
-      endTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
-      subject: 'Sleep',
-    );
-    appointments.add(sleepAppointment);
-
-    // Add work appointment
-    final workAppointment = Appointment(
-      startTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 9, 0),
-      endTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 11, 0),
-      subject: 'Work',
-    );
-    appointments.add(workAppointment);
-
-    // Add eat appointment
-    final eatAppointment = Appointment(
-      startTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 11, 0),
-      endTime: DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day, 12, 0),
-      subject: 'Eat',
-    );
-    appointments.add(eatAppointment);
-
-    return _DataSource(appointments);
-  }
-}
-
-class _DataSource extends CalendarDataSource {
-  _DataSource(List<Appointment> source) {
-    appointments = source;
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'add-new-table.dart';
+import 'add-new-activity.dart';
+import 'add-note.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -102,7 +103,27 @@ class HomeScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 10*widthUnit), //note button
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10), 
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10), 
+                            child: Container(
+                              width: screenWidth / 2,
+                              height: screenHeight / 1.5,
+                              child: AddNoteModal(),
+                            ),
+                          ),
+                        );
+                      },
+
+                    );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0x716B6B),
                         foregroundColor: Colors.white,
@@ -128,10 +149,10 @@ class HomeScreen extends StatelessWidget {
                       builder: (BuildContext context) {
                         return Dialog(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10), // Adjust the radius as needed
+                            borderRadius: BorderRadius.circular(10), 
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10), // Same radius as the Dialog shape
+                            borderRadius: BorderRadius.circular(10), 
                             child: Container(
                               width: screenWidth / 2,
                               height: screenHeight / 1.4,

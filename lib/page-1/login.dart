@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/gestures.dart';
 import 'package:myapp/utils.dart';
 import 'signup.dart';
 import 'home.dart';
-import 'add-new-table.dart';
 
 void main() {
   runApp(DailyScheduleApp());

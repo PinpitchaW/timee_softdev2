@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/home.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/gestures.dart';
 import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/login.dart';
-import 'package:myapp/page-1/add-new-table.dart';
+import 'package:myapp/page-1/add-new-activity.dart';
+import 'package:myapp/page-1/add-note.dart';
+import 'package:myapp/page-1/history.dart';
 
 void main() {
   runApp(DailyScheduleApp());
@@ -18,7 +21,7 @@ class DailyScheduleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: HistoryScreen(),
     );
   }
 }

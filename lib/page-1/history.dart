@@ -1,245 +1,234 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/gestures.dart';
-// import 'dart:ui';
-// import 'package:google_fonts/google_fonts.dart';
-// import 'package:myapp/utils.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'dart:ui';
+import 'package:fl_chart/fl_chart.dart';
 
-// class Scene extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     double baseWidth = 1440;
-//     double widthUnit = MediaQuery.of(context).size.width / baseWidth;
-//     double widthUnit2 = widthUnit * 0.97;
-//     return Container(
-//       width: double.infinity,
-//       child: Container(
-//         // historyrLD (37:421)
-//         width: double.infinity,
-//         decoration: BoxDecoration (
-//           color: Color(0xfffffcf9),
-//         ),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             Container(
-//               // autogroupg6ahnzZ (GKYbmuMLayZ4GWT6c7G6aH)
-//               width: double.infinity,
-//               height: 150*widthUnit,
-//               decoration: BoxDecoration (
-//                 color: Color(0xff9eb8d9),
-//               ),
-//               child: Center(
-//                 child: Center(
-//                   child: Text(
-//                     'History',
-//                     textAlign: TextAlign.center,
-//                     style: SafeGoogleFont (
-//                       'Livvic',
-//                       fontSize: 64*widthUnit2,
-//                       fontWeight: FontWeight.w700,
-//                       height: 1.255*widthUnit2/widthUnit,
-//                       color: Color(0xff000000),
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//             Container(
-//               // autogroup6r3fB17 (GKYbreiRm8cy63LCE86r3f)
-//               padding: EdgeInsets.fromLTRB(112*widthUnit, 79*widthUnit, 39*widthUnit, 180*widthUnit),
-//               width: double.infinity,
-//               child: Column(
-//                 crossAxisAlignment: CrossAxisAlignment.center,
-//                 children: [
-//                   Container(
-//                     // dateselection6Ny (37:458)
-//                     margin: EdgeInsets.fromLTRB(394*widthUnit, 0*widthUnit, 467*widthUnit, 86*widthUnit),
-//                     width: double.infinity,
-//                     decoration: BoxDecoration (
-//                       borderRadius: BorderRadius.circular(6*widthUnit),
-//                     ),
-//                     child: Row(
-//                       crossAxisAlignment: CrossAxisAlignment.center,
-//                       children: [
-//                         Container(
-//                           // selectdateooB (37:441)
-//                           margin: EdgeInsets.fromLTRB(0*widthUnit, 0.5*widthUnit, 30*widthUnit, 0*widthUnit),
-//                           child: Text(
-//                             'Select date :',
-//                             style: SafeGoogleFont (
-//                               'Cuprum',
-//                               fontSize: 40*widthUnit2,
-//                               fontWeight: FontWeight.w700,
-//                               height: 1.155*widthUnit2/widthUnit,
-//                               color: Color(0xff000000),
-//                             ),
-//                           ),
-//                         ),
-//                         Container(
-//                           // textinput7J5 (37:442)
-//                           margin: EdgeInsets.fromLTRB(0*widthUnit, 0*widthUnit, 0*widthUnit, 0.5*widthUnit),
-//                           padding: EdgeInsets.fromLTRB(12*widthUnit, 13*widthUnit, 20*widthUnit, 12*widthUnit),
-//                           height: 47*widthUnit,
-//                           decoration: BoxDecoration (
-//                             border: Border.all(color: Color(0xff000000)),
-//                             color: Color(0xffffffff),
-//                             borderRadius: BorderRadius.circular(6*widthUnit),
-//                           ),
-//                           child: Row(
-//                             crossAxisAlignment: CrossAxisAlignment.center,
-//                             children: [
-//                               Container(
-//                                 // textNE1 (37:443)
-//                                 margin: EdgeInsets.fromLTRB(0*widthUnit, 0*widthUnit, 38*widthUnit, 0*widthUnit),
-//                                 child: Text(
-//                                   '03/02/2024',
-//                                   style: SafeGoogleFont (
-//                                     'Cuprum',
-//                                     fontSize: 30*widthUnit2,
-//                                     fontWeight: FontWeight.w400,
-//                                     height: 0.7333333333*widthUnit2/widthUnit,
-//                                     letterSpacing: -0.6*widthUnit,
-//                                     color: Color(0xff000000),
-//                                   ),
-//                                 ),
-//                               ),
-//                               Container(
-//                                 // selectorUH3 (37:444)
-//                                 width: 8*widthUnit,
-//                                 height: 14*widthUnit,
-//                                 child: Image.asset(
-//                                   'assets/page-1/images/selector-vNq.png',
-//                                   width: 8*widthUnit,
-//                                   height: 14*widthUnit,
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                   Container(
-//                     // graphPQ1 (37:450)
-//                     width: double.infinity,
-//                     height: 363.5*widthUnit,
-//                     child: Row(
-//                       crossAxisAlignment: CrossAxisAlignment.center,
-//                       children: [
-//                         Container(
-//                           // autogrouperlvveq (GKYcVoKCKo1RiAvhxoErLV)
-//                           padding: EdgeInsets.fromLTRB(0*widthUnit, 0*widthUnit, 113*widthUnit, 0*widthUnit),
-//                           height: double.infinity,
-//                           child: Row(
-//                             crossAxisAlignment: CrossAxisAlignment.center,
-//                             children: [
-//                               Container(
-//                                 // autogroupcea14W9 (GKYcCZJvaof7tiFfsAcEa1)
-//                                 margin: EdgeInsets.fromLTRB(0*widthUnit, 0*widthUnit, 37*widthUnit, 11*widthUnit),
-//                                 child: Column(
-//                                   crossAxisAlignment: CrossAxisAlignment.start,
-//                                   children: [
-//                                     Container(
-//                                       // summarizeCMT (37:453)
-//                                       margin: EdgeInsets.fromLTRB(0*widthUnit, 0*widthUnit, 0*widthUnit, 39.5*widthUnit),
-//                                       child: Text(
-//                                         'Summarize',
-//                                         style: SafeGoogleFont (
-//                                           'Livvic',
-//                                           fontSize: 50*widthUnit2,
-//                                           fontWeight: FontWeight.w700,
-//                                           height: 1.255*widthUnit2/widthUnit,
-//                                           color: Color(0xff000000),
-//                                         ),
-//                                       ),
-//                                     ),
-//                                     Container(
-//                                       // graph6xd (37:454)
-//                                       width: 249.88*widthUnit,
-//                                       height: 250*widthUnit,
-//                                       child: Image.asset(
-//                                         'assets/page-1/images/graph-jGR.png',
-//                                         width: 249.88*widthUnit,
-//                                         height: 250*widthUnit,
-//                                       ),
-//                                     ),
-//                                   ],
-//                                 ),
-//                               ),
-//                               Container(
-//                                 // sleep75work17eat8DnM (37:452)
-//                                 margin: EdgeInsets.fromLTRB(0*widthUnit, 0*widthUnit, 0*widthUnit, 37.5*widthUnit),
-//                                 constraints: BoxConstraints (
-//                                   maxWidth: 96*widthUnit,
-//                                 ),
-//                                 child: Text(
-//                                   'Sleep 75%\nWork  17%\nEat     8%\n',
-//                                   style: SafeGoogleFont (
-//                                     'Cuprum',
-//                                     fontSize: 25*widthUnit2,
-//                                     fontWeight: FontWeight.w400,
-//                                     height: 1.155*widthUnit2/widthUnit,
-//                                     color: Color(0xff000000),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                         Container(
-//                           // autogrouppyghuv5 (GKYcJZ8w1qxGcSKALLpyGh)
-//                           width: 769*widthUnit,
-//                           height: double.infinity,
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Container(
-//                                 // notef8Z (37:459)
-//                                 margin: EdgeInsets.fromLTRB(1*widthUnit, 0*widthUnit, 0*widthUnit, 30.5*widthUnit),
-//                                 child: Text(
-//                                   'Note',
-//                                   style: SafeGoogleFont (
-//                                     'Livvic',
-//                                     fontSize: 50*widthUnit2,
-//                                     fontWeight: FontWeight.w700,
-//                                     height: 1.255*widthUnit2/widthUnit,
-//                                     color: Color(0xff000000),
-//                                   ),
-//                                 ),
-//                               ),
-//                               Container(
-//                                 // autogroup7kbtyf3 (GKYcPDfpuYQVqZFS2p7KbT)
-//                                 padding: EdgeInsets.fromLTRB(26*widthUnit, 18*widthUnit, 26*widthUnit, 18*widthUnit),
-//                                 width: double.infinity,
-//                                 height: 270*widthUnit,
-//                                 decoration: BoxDecoration (
-//                                   border: Border.all(color: Color(0xff000000)),
-//                                   color: Color(0xffffffff),
-//                                   borderRadius: BorderRadius.circular(5*widthUnit),
-//                                 ),
-//                                 child: Text(
-//                                   'Did great today!!!',
-//                                   style: SafeGoogleFont (
-//                                     'Cuprum',
-//                                     fontSize: 25*widthUnit2,
-//                                     fontWeight: FontWeight.w400,
-//                                     height: 1.155*widthUnit2/widthUnit,
-//                                     color: Color(0xff000000),
-//                                   ),
-//                                 ),
-//                               ),
-//                             ],
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//           );
-//   }
-// }
+class HistoryScreen extends StatefulWidget {
+  @override
+  _HistoryScreenState createState() => _HistoryScreenState();
+}
+
+class _HistoryScreenState extends State<HistoryScreen> {
+  String? dropdownValue;
+
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double widthUnit = MediaQuery.of(context).size.width / 1440;
+    double heightUnit = MediaQuery.of(context).size.height / 775;
+    double widthUnit2 = widthUnit * 0.97;
+    DateTime selectedDate = DateTime.now();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'History',
+          style: TextStyle(
+            fontSize: 40 * widthUnit,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Color(0xFF9EB8D9),
+        centerTitle: true,
+        toolbarHeight: 100.0 * heightUnit,
+      ),
+      body: Column(
+        children: [
+          Container(
+            width: screenWidth,
+            height: screenHeight - (100 * heightUnit),
+            padding: EdgeInsets.fromLTRB(20 * widthUnit, 20 * widthUnit, 20 * widthUnit, 20 * widthUnit),
+            decoration: const BoxDecoration(
+              color: Color(0xfffffcf9),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(bottom: 20 * widthUnit),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(right: 30 * widthUnit),
+                        child: Text(
+                          'Select date :',
+                          style: TextStyle(
+                            fontSize: 25 * widthUnit2,
+                            fontWeight: FontWeight.w700,
+                            height: 1.155 * widthUnit2 / widthUnit,
+                            color: Color(0xff000000),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Container(
+                          width: 350 * widthUnit,
+                          padding: EdgeInsets.symmetric(vertical: 13 * widthUnit, horizontal: 12 * widthUnit),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xff000000)),
+                            color: Color(0xffffffff),
+                            borderRadius: BorderRadius.circular(6 * widthUnit),
+                          ),
+                          child: Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () async {
+                                  final DateTime? pickedDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: selectedDate,
+                                    firstDate: DateTime(1900),
+                                    lastDate: DateTime(2101),
+                                  );
+                                  if (pickedDate != null &&
+                                      pickedDate != selectedDate) {
+                                    setState(() {
+                                      selectedDate = pickedDate;
+                                    });
+                                  }
+                                },
+                                child: Text(
+                                  '${selectedDate.day}/${selectedDate.month}/${selectedDate.year}',
+                                  style: TextStyle(
+                                    fontSize: 25 * widthUnit2,
+                                    fontWeight: FontWeight.w400,
+                                    height: 0.88 * widthUnit2 / widthUnit,
+                                    letterSpacing: -0.5 * widthUnit,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                              ),
+                              Spacer(),
+                              GestureDetector(
+                                onTap: () async {
+                                  final DateTime? pickedDate = await showDatePicker(
+                                    context: context,
+                                    initialDate: selectedDate,
+                                    firstDate: DateTime(1900),
+                                    lastDate: DateTime(2101),
+                                    builder: (BuildContext context, Widget? child) {
+                                      return Theme(
+                                        data: ThemeData.light(),
+                                        child: child!
+                                      );
+                                    },
+                                  );
+                                  if (pickedDate != null &&
+                                      pickedDate != selectedDate) {
+                                    setState(() {
+                                      selectedDate = pickedDate;
+                                    });
+                                  }
+                                },
+                                child: Icon(Icons.calendar_today,
+                                    size: 24 * widthUnit2,
+                                    color: Color(0xff000000)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  children: [
+                    Container(
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 20 * widthUnit, 0, 20 * widthUnit),
+                            child: Text(
+                              'Summarize',
+                              style: TextStyle(
+                                fontSize: 25 * widthUnit2,
+                                fontWeight: FontWeight.w800,
+                                color: Color(0xff000000),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 500 * widthUnit,
+                            height: 400 * widthUnit,
+                            child: PieChart(
+                              PieChartData(
+                                sections: [
+                                  PieChartSectionData(
+                                    color: Colors.blue,
+                                    value: 9,
+                                    title: 'Sleep',
+                                    radius: 180 * widthUnit,
+                                  ),
+                                  PieChartSectionData(
+                                    color: Colors.green,
+                                    value: 2,
+                                    title: 'Work',
+                                    radius: 180 * widthUnit,
+                                  ),
+                                  PieChartSectionData(
+                                    color: Colors.orange,
+                                    value: 1,
+                                    title: 'Eat',
+                                    radius: 180 * widthUnit,
+                                  ),
+                                ],
+                                centerSpaceRadius: 0,
+                                sectionsSpace: 0,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 900 * widthUnit,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(10* widthUnit, 50 * widthUnit, 0, 0),
+                            child: Text(
+                              'Note',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 25 * widthUnit2,
+                                fontWeight: FontWeight.w700,
+                                height: 1.155 * widthUnit2 / widthUnit,
+                                color: Color(0xff000000),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(10 * widthUnit, 50 * widthUnit, 30 * widthUnit, 52 * widthUnit),
+                            padding: EdgeInsets.all(20 * widthUnit),
+                            width: double.infinity,
+                            height: 360 * heightUnit,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Color(0xff000000)),
+                              color: Color(0xffffffff),
+                              borderRadius: BorderRadius.circular(5 * widthUnit),
+                            ),
+                            child: Text(
+                              'Did great today!!!',
+                              style: TextStyle(
+                                fontSize: 20 * widthUnit2,
+                                fontWeight: FontWeight.w400,
+                                height: 1.155 * widthUnit2 / widthUnit,
+                                color: Color(0xff000000),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
