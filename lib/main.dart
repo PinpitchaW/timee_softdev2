@@ -21,7 +21,7 @@ class DailyScheduleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HistoryScreen(),
+      home: LoginScreen(),
     );
   }
 }
