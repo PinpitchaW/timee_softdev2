@@ -3,6 +3,8 @@ import 'package:flutter/gestures.dart';
 import 'package:myapp/utils.dart';
 import 'signup.dart';
 import 'home.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 
 void main() {
   runApp(DailyScheduleApp());

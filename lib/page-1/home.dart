@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/page-1/edit-table.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'add-new-activity.dart';
 import 'add-note.dart';
+import 'edit-table.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -29,13 +31,46 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 10*widthUnit),
-            Text(
-              'Today',
-              style: TextStyle(
-                fontSize: 25*widthUnit,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                Text(
+                  'Today',
+                  style: TextStyle(
+                    fontSize: 25*widthUnit,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Dialog(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10), 
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10), 
+                            child: Container(
+                              width: screenWidth / 3,
+                              height: screenHeight / 2,
+                              child: EditTableModal(),
+                            ),
+                          ),
+                        );
+                      },
+
+                    );
+                  },
+                  child: Icon(
+                    Icons.edit,
+                    size: 25*widthUnit,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
             ),
+
             SizedBox(height: 10*widthUnit),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

@@ -5,10 +5,19 @@ import 'package:flutter/gestures.dart';
 import 'package:myapp/utils.dart';
 import 'login.dart';
 import 'home.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: 'https://jfhbswvtjdkigvpntxrp.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmaGJzd3Z0amRraWd2cG50eHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk0ODUwNDYsImV4cCI6MjAyNTA2MTA0Nn0.yLLoLXzLVl08ev1k4qZwMqmys7-yGlo7dVnw7M9Mwwg',
+  );
+
   runApp(DailyScheduleApp());
 }
+
 
 class DailyScheduleApp extends StatelessWidget {
   @override
@@ -23,7 +32,16 @@ class DailyScheduleApp extends StatelessWidget {
   }
 }
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -160,6 +178,7 @@ class SignupScreen extends StatelessWidget {
                                           width: screenWidth*widthUnit,
                                           height: 60*widthUnit,
                                           child: TextField(
+                                            controller: emailController,
                                             decoration: InputDecoration(
                                               border: OutlineInputBorder(),
                                               hintText: 'sample@email.com',
@@ -203,6 +222,7 @@ class SignupScreen extends StatelessWidget {
                                                 width: screenWidth*widthUnit,
                                                 height: 60*widthUnit,
                                                 child: TextField(
+                                                  controller: passwordController,
                                                   obscureText: true,
                                                   decoration: InputDecoration(
                                                     border: OutlineInputBorder(),
@@ -247,6 +267,7 @@ class SignupScreen extends StatelessWidget {
                                                       width: screenWidth*widthUnit,
                                                       height: 60*widthUnit,
                                                       child: TextField(
+                                                        controller: confirmPasswordController,
                                                         obscureText: true,
                                                         decoration: InputDecoration(
                                                           border: OutlineInputBorder(),
@@ -273,8 +294,20 @@ class SignupScreen extends StatelessWidget {
 
                                           child: Center(
                                             child: ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+                                              onPressed: () async {
+                                                String email = emailController.text.trim();
+                                                String password = passwordController.text;
+                                                String confirmPassword = confirmPasswordController.text;
+
+                                                if (password != confirmPassword) {
+                                                   print("password doesn't match");
+                                                }
+
+                                                await Supabase.instance.client
+                                                  .from('users')
+                                                  .insert({'email': email, 'password': password});
+                                                
+                                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
                                               },
                                               style: ElevatedButton.styleFrom(
                                                 padding: EdgeInsets.zero, 
