@@ -103,10 +103,11 @@ class EditTableModal extends StatelessWidget {
               columns: [
                 DataColumn(
                   label: Text('Activities',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25
-                  ),)
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25
+                    ),
+                  )
                 ),
                 DataColumn(
                   label: Text('From',
