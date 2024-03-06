@@ -323,7 +323,7 @@ class _AddNewTableModalState extends State<AddNewTableModal> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                    margin: EdgeInsets.fromLTRB(30 * widthUnit, 0, 0, 0),
                     child: Text(
                       'to : ',
                       style: TextStyle(
@@ -353,7 +353,7 @@ class _AddNewTableModalState extends State<AddNewTableModal> {
                         DropdownButton<String>(
                           value: TimeList.first,
                           icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 24,
+                          iconSize: 24 * widthUnit2,
                           style: TextStyle(
                             color: Color(0xff000000),
                             fontSize: 20 * widthUnit2,

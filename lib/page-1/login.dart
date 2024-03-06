@@ -4,6 +4,7 @@ import 'package:myapp/utils.dart';
 import 'signup.dart';
 import 'home.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:html' as html;
 
 
 void main() {
@@ -11,8 +12,11 @@ void main() {
 }
 
 class DailyScheduleApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+    html.window.resizeTo(1280, 720);
+
     return MaterialApp(
       title: '',
       theme: ThemeData(
@@ -36,8 +40,10 @@ class LoginScreen extends StatelessWidget {
     //   print("object");
     // }
 
-    // print(screenHeight);
-    // print(screenWidth);
+    print("height");
+    print(screenHeight);
+    print("width");
+    print(screenWidth);
 
     return Material( 
       child: Container(
@@ -97,6 +103,7 @@ class LoginScreen extends StatelessWidget {
                 child: Container(
                   width: 960*widthUnit,
                   height: 553*widthUnit,
+                  // color: Color.fromARGB(255, 40, 60, 39),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -104,6 +111,7 @@ class LoginScreen extends StatelessWidget {
                       Container(
                         // autogroupwlj7uwT (GKYPP1WCLMcAHCjdgrwLj7)
                         margin: EdgeInsets.fromLTRB(0, 0, 0, 12*widthUnit),
+                        // color: Color.fromARGB(255, 50, 93, 117),
                         width: screenWidth*widthUnit,
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,11 +119,13 @@ class LoginScreen extends StatelessWidget {
                             Container(
                               // autogroup9dy1dMf (GKYPafqS4bjjM15Jw39DY1)
                               margin: EdgeInsets.fromLTRB(0, 72*widthUnit, 116*widthUnit, 0),
+                              color: Color.fromARGB(255, 150, 137, 56),
                               width: 449.5*widthUnit,
                             ),
                             Container(
                               // logintext
                               width: 394*widthUnit,
+                              color: Color.fromARGB(255, 150, 137, 56),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

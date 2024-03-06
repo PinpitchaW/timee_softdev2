@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:fl_chart/fl_chart.dart';
+import 'navbar.dart'; // Importing navbar.dart
 
 class HistoryScreen extends StatefulWidget {
   @override
@@ -21,20 +22,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
     double widthUnit2 = widthUnit * 0.97;
     DateTime selectedDate = DateTime.now();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'History',
-          style: TextStyle(
-            fontSize: 40 * widthUnit,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: Color(0xFF9EB8D9),
-        centerTitle: true,
-        toolbarHeight: 100.0 * heightUnit,
-      ),
       body: Column(
         children: [
+          NavBar(), 
           Container(
             width: screenWidth,
             height: screenHeight - (100 * heightUnit),

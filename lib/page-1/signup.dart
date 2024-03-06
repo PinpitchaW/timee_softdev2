@@ -6,13 +6,23 @@ import 'package:myapp/utils.dart';
 import 'login.dart';
 import 'home.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load();
+  final supabaseUrl = dotenv.env['SUPABASE_URL'];
+  final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
+
+  if (supabaseUrl == null || supabaseAnonKey == null) {
+    throw Exception('Missing SUPABASE_URL or SUPABASE_ANON_KEY in .env file');
+  }
+
   await Supabase.initialize(
-    url: 'https://jfhbswvtjdkigvpntxrp.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmaGJzd3Z0amRraWd2cG50eHJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk0ODUwNDYsImV4cCI6MjAyNTA2MTA0Nn0.yLLoLXzLVl08ev1k4qZwMqmys7-yGlo7dVnw7M9Mwwg',
+    url: supabaseUrl,
+    anonKey: supabaseAnonKey,
   );
 
   runApp(DailyScheduleApp());

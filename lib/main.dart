@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/page-1/home.dart';
-import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/gestures.dart';
-import 'package:myapp/utils.dart';
 import 'package:myapp/page-1/login.dart';
-import 'package:myapp/page-1/add-new-activity.dart';
-import 'package:myapp/page-1/add-note.dart';
-import 'package:myapp/page-1/history.dart';
+import 'package:myapp/page-1/navbar.dart';
+import 'package:myapp/page-1/home.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:myapp/page-1/to-do-list.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'dart:html' as html;
 
+// Future<void> main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+
+//   await dotenv.load();
+//   final supabaseUrl = dotenv.env['SUPABASE_URL'];
+//   final supabaseAnonKey = dotenv.env['SUPABASE_ANON_KEY'];
+
+//   if (supabaseUrl == null || supabaseAnonKey == null) {
+//     throw Exception('Missing SUPABASE_URL or SUPABASE_ANON_KEY in .env file');
+//   }
+
+//   await Supabase.initialize(
+//     url: supabaseUrl,
+//     anonKey: supabaseAnonKey,
+//   );
+
+//   runApp(DailyScheduleApp());
+// }
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,13 +39,40 @@ Future<void> main() async {
 class DailyScheduleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    html.window.resizeTo(1280, 720);
     return MaterialApp(
-      title: '',
+      title: 'Daily Schedule',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:ToDoListScreen(),
+      home: LoginScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
+class MainLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          NavBar(), 
+          Expanded(
+            child: Navigator(
+              onGenerateRoute: (settings) {
+                switch (settings.name) {
+                  case '/':
+                    return MaterialPageRoute(builder: (context)=>HomeScreen());
+                  // Add routes for other screens here
+                  default:
+                    return MaterialPageRoute(builder: (context)=>HomeScreen()); 
+                }
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
