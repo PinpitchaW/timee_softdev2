@@ -9,6 +9,7 @@ import 'package:myapp/page-1/add-new-activity.dart';
 import 'package:myapp/page-1/add-note.dart';
 import 'package:myapp/page-1/history.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:myapp/page-1/to-do-list.dart';
 
 
 Future<void> main() async {
@@ -30,7 +31,7 @@ class DailyScheduleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:LoginScreen(),
+      home:ToDoListScreen(),
     );
   }
 }

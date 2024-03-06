@@ -49,13 +49,6 @@ class _SignupScreenState extends State<SignupScreen> {
     double widthUnit = screenWidth / 1440;
     double widthUnit2 = widthUnit * 0.97;
 
-    // void clicked(){
-    //   print("object");
-    // }
-
-    // print(screenHeight);
-    // print(screenWidth*widthUnit);
-
     return Material( 
       child: Container(
         width: screenWidth*widthUnit,

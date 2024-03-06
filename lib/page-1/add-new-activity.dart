@@ -69,7 +69,7 @@ class _AddNewTableModalState extends State<AddNewTableModal> {
               height: 30 * heightUnit,
               margin: EdgeInsets.fromLTRB(0, 30 * heightUnit, 0, 30 * heightUnit),
               child: Text(
-                'Add new activity',
+                'Add new activities',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30 * widthUnit2,

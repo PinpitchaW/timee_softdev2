@@ -30,13 +30,14 @@ class LoginScreen extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
     double widthUnit = screenWidth / 1440;
     double widthUnit2 = widthUnit * 0.97;
+    double heightUnit = MediaQuery.of(context).size.height / 775;
 
     // void clicked(){
     //   print("object");
     // }
 
     // print(screenHeight);
-    // print(screenWidth*widthUnit);
+    // print(screenWidth);
 
     return Material( 
       child: Container(
