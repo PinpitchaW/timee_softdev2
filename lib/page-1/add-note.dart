@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:intl/intl.dart';
+import 'package:myapp/page-1/home.dart';
 import 'dart:ui';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utils.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AddNoteModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = MediaQuery.of(context).size.width;
     double baseHeight = MediaQuery.of(context).size.height;
-    double modalWidth = baseWidth / 2;
+    double modalWidth = baseWidth / 2 ;
     double modalHeight = baseHeight / 1.4;
     double widthUnit = MediaQuery.of(context).size.width / 1440;
     double heightUnit = MediaQuery.of(context).size.height / 775;
     double widthUnit2 = widthUnit * 0.97;
+    final TextEditingController noteController = TextEditingController();
+
+  Future<void> addnote() async {
+    var data = await Supabase.instance.client
+        .from('note')
+        .insert({
+          "note": noteController.text,
+          "date": DateFormat('yyyy-MM-dd').format(DateTime.now())
+        }).select();
+    debugPrint(data.toString());
+  }
 
     return Scaffold(
       body: Container(
-        width: modalWidth,
-        height: modalHeight,
+        width: modalWidth  * widthUnit,
+        height: modalHeight  * heightUnit,
         child: Center(
           child: Container(
             // addtodolistLxD (31:153)
@@ -61,6 +75,7 @@ class AddNoteModal extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5 * widthUnit),
                   ),
                   child: TextField(
+                    controller: noteController,
                     decoration: InputDecoration(
                       hintText: 'Add something here...',
                       border: InputBorder.none,
@@ -82,7 +97,9 @@ class AddNoteModal extends StatelessWidget {
                   child: Center(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        addnote().then((value) {
+                      Navigator.pushReplacementNamed(context, '/home');
+                    });
                       },
                       style: ElevatedButton.styleFrom(
                         padding: EdgeInsets.zero,

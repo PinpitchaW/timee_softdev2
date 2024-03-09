@@ -26,7 +26,7 @@ class EditTableModal extends StatelessWidget {
     }) {
       return TextStyle(
         fontWeight: fontWeight,
-        fontSize: fontSize,
+        fontSize: fontSize * widthUnit,
         color: color,
       );
     }
@@ -38,25 +38,23 @@ class EditTableModal extends StatelessWidget {
         context: context,
         builder: (BuildContext context) {
           return Container(
-            padding: EdgeInsets.all(20),
+            padding: EdgeInsets.all(20 * widthUnit),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(controller: _textEditingController),
-                SizedBox(height: 20),
+                SizedBox(height: 20 * widthUnit),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // Handle confirm action here
                         Navigator.pop(context);
                       },
                       child: Text('Confirm'),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle cancel action here
                         Navigator.pop(context);
                       },
                       child: Text('Cancel'),
@@ -75,10 +73,10 @@ class EditTableModal extends StatelessWidget {
         // addnewtablePZX (31:117)
         width: modalWidth,
         height: modalHeight,
-        padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+        padding: EdgeInsets.fromLTRB(20  * widthUnit, 20  *widthUnit, 20  *widthUnit, 20  *widthUnit),
         decoration: BoxDecoration(
           color: const Color.fromARGB(255, 210, 208, 208),
-          borderRadius: BorderRadius.circular(10 * widthUnit),
+          borderRadius: BorderRadius.circular(10  *widthUnit),
         ),
 
         child: Column(
@@ -105,7 +103,7 @@ class EditTableModal extends StatelessWidget {
                   label: Text('Activities',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25
+                      fontSize: 25 * widthUnit
                     ),
                   )
                 ),
@@ -113,7 +111,7 @@ class EditTableModal extends StatelessWidget {
                   label: Text('From',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25
+                      fontSize: 25 * widthUnit
                     ),
                   )
                 ),
@@ -121,7 +119,7 @@ class EditTableModal extends StatelessWidget {
                   label: Text('To',
                     style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 25
+                    fontSize: 25 * widthUnit
                   ),
                   )
                 ),
