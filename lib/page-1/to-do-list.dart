@@ -46,7 +46,6 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
       ["Quiz Network", "23/03/24", "5/40"],
       ["Report Com org", "01/04/24", "2/10"],
     ];
-    DateTime selectedDate = DateTime.now();
 
     TextStyle customTextStyle({
       FontWeight fontWeight = FontWeight.w400,
@@ -68,7 +67,7 @@ class _ToDoListScreenState extends State<ToDoListScreen> {
             var data = snapshot.data!;
             return Column(
             children: [
-              NavBar(), // Adding the NavBar widget
+              NavBar(), 
               Expanded(
                 child: Container(
                   width: screenWidth,

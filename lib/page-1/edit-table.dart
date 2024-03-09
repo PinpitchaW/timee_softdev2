@@ -3,13 +3,18 @@ import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:myapp/utils.dart';
 
-class EditTableModal extends StatelessWidget {
+class EditTableModal extends StatefulWidget {
+  @override
+  _EditTableModalState createState() => _EditTableModalState();
+}
+
+class _EditTableModalState extends State<EditTableModal> {
   @override
   Widget build(BuildContext context) {
     double baseWidth = MediaQuery.of(context).size.width;
     double baseHeight = MediaQuery.of(context).size.height;
     double modalWidth = baseWidth / 2;
-    double modalHeight = baseHeight / 1.4;
+    double modalHeight = baseHeight / 1.2;
     double widthUnit = MediaQuery.of(context).size.width / 1440;
     double heightUnit = MediaQuery.of(context).size.height / 775;
     double widthUnit2 = widthUnit * 0.97;
@@ -85,7 +90,7 @@ class EditTableModal extends StatelessWidget {
               width: 228 * widthUnit,
               height: 30 * heightUnit,
               margin:
-                  EdgeInsets.fromLTRB(0, 30 * heightUnit, 0, 30 * heightUnit),
+                  EdgeInsets.fromLTRB(0, 20 * heightUnit, 0, 10 * heightUnit),
               child: Text(
                 'Edit table',
                 textAlign: TextAlign.center,

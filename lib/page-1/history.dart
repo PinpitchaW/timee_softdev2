@@ -1,5 +1,4 @@
 import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -10,13 +9,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'navbar.dart';
 
 const List<Color> colorListPie = [
-  // Colors.purple,
-  // Color.fromARGB(255, 82, 39, 176),
-  // Colors.blue,
-  Colors.green,
-  Colors.yellow,
-  Colors.orange,
-  Color.fromARGB(255, 241, 85, 74),
+  Color.fromRGBO(221, 167, 136, 1),
+  Color.fromRGBO(163, 184, 131, 1),
+  Color.fromRGBO(129, 151, 191, 1),
+  Color.fromRGBO(192, 141, 162, 1),
 ];
 
 class HistoryScreen extends StatefulWidget {
@@ -41,7 +37,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double widthUnit = screenWidth / 1440;
 
-    var curDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    var curDate = DateFormat('yyyy-MM-dd').format(selectedDate);
     var data = (await Supabase.instance.client.rpc('getActivityTime',
             params: {"dateToGet": curDate, "userId": Supabase.instance.client.auth.currentUser!.id}) as List<dynamic>)
         .map((e) => e as Map<String, dynamic>)
@@ -72,7 +68,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
     double widthUnit = MediaQuery.of(context).size.width / 1440;
     double heightUnit = MediaQuery.of(context).size.height / 775;
     double widthUnit2 = widthUnit * 0.97;
-    DateTime selectedDate = DateTime.now();
+    
     return Scaffold(
         body: FutureBuilder(
             future: Future.wait([getNote(), getPieChartData()]),
@@ -211,7 +207,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                       PieChartData(
                                         sections: data![1] as List<PieChartSectionData>,
                                         centerSpaceRadius: 0,
-                                        sectionsSpace: 0,
+                                        sectionsSpace: 1.5,
                                       ),
                                     ),
                                   ),

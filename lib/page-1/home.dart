@@ -13,23 +13,28 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
 
 const List<Color> colorList = [
-  Colors.purple,
-  Color.fromARGB(255, 82, 39, 176),
-  Colors.blue,
-  Colors.green,
-  Colors.yellow,
-  Colors.orange,
-  Color.fromARGB(255, 241, 85, 74),
+  // Color.fromRGBO(182, 226, 221, 1),
+  // Color.fromRGBO(200, 221, 187, 1),
+  // Color.fromRGBO(233, 229, 175, 1),
+  // Color.fromRGBO(251, 223, 157, 1),
+  // Color.fromRGBO(251, 201, 157, 1),
+  // Color.fromRGBO(251, 179, 157, 1),
+  // Color.fromRGBO(251, 160, 157, 1),
+  Color.fromRGBO(125, 208, 198, 1),
+  Color.fromRGBO(160, 206, 131, 1),
+  Color.fromRGBO(239, 233, 141, 1),
+  Color.fromRGBO(254, 191, 113, 1),
+  Color.fromRGBO(244, 142, 111, 1),
+  Color.fromRGBO(229, 154, 200, 1),
+  Color.fromRGBO(220, 152, 234, 1),
 ];
 
 const List<Color> colorListPie = [
-  // Colors.purple,
-  // Color.fromARGB(255, 82, 39, 176),
-  // Colors.blue,
-  Colors.green,
-  Colors.yellow,
-  Colors.orange,
-  Color.fromARGB(255, 241, 85, 74),
+  Color.fromRGBO(238, 211, 217, 1),
+  Color.fromRGBO(220, 186, 166, 1),
+  Color.fromRGBO(178, 189, 162, 1),
+  Color.fromRGBO(168, 181, 206, 1),
+  Color.fromRGBO(200, 162, 178, 1),
 ];
 
 class HomeScreen extends StatefulWidget {
@@ -62,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 value: DateTime.parse("$curDate ${e["time_used"]}")
                     .hour
                     .toDouble(),
+                    
                 color: colorListPie[index % colorListPie.length],
                 radius: widthUnit * 180,
               ));
@@ -131,9 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: EdgeInsets.all(10.0 * widthUnit),
                     child: isScreenWide
                         ? _buildColumnLayout(
-                            snapshot.data) // Column layout for wide screens
+                            snapshot.data) 
                         : _buildRowLayout(
-                            snapshot.data), // Row layout for narrow screens
+                            snapshot.data), 
                   ),
                 ),
               ],
@@ -180,8 +186,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Container(
-                          width: screenWidth / 2.2 * widthUnit,
-                          height: screenHeight / 1.9 * heightUnit,
+                          width: MediaQuery.of(context).size.width / 2.8,
+                          height: MediaQuery.of(context).size.height * 0.7,
                           child: EditTableModal(),
                         ),
                       ),
@@ -211,7 +217,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     view: CalendarView.day,
                     dataSource: data[0],
                     timeSlotViewSettings: TimeSlotViewSettings(
-                      timeIntervalWidth: 100 * widthUnit,
+                      timeIntervalWidth: 30 * widthUnit,
+                    ),
+                    appointmentTextStyle: TextStyle(
+                      color: Color.fromARGB(255, 69, 69, 69)
                     ),
                   ),
                 ),
@@ -238,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     PieChartData(
                         sections: data[1],
                         centerSpaceRadius: 0,
-                        sectionsSpace: 0,
+                        sectionsSpace: 1.5,
                         pieTouchData: PieTouchData(enabled: false)),
                   ),
                 ),
@@ -349,45 +358,48 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 10 * widthUnit),
-              Row(
-                children: [
-                  Text(
-                    'Today',
-                    style: TextStyle(
-                      fontSize: 25 * heightUnit,
-                      fontWeight: FontWeight.bold,
+              // SizedBox(height: 10 * widthUnit),
+              Container(
+                padding: EdgeInsets.all(30),
+                child: Row(
+                  children: [
+                    Text(
+                      'Today',
+                      style: TextStyle(
+                        fontSize: 25 * heightUnit,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Dialog(
-                            insetPadding:
-                                EdgeInsets.symmetric(horizontal: 2 * widthUnit),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(
-                                width: screenWidth / 2.2 * widthUnit,
-                                height: screenHeight / 1.9 * heightUnit,
-                                child: EditTableModal(),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Dialog(
+                              insetPadding:
+                                  EdgeInsets.symmetric(horizontal: 2 * widthUnit),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Icon(
-                      Icons.edit,
-                      size: 25 * heightUnit,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Container(
+                                  width: MediaQuery.of(context).size.width / 2.8,
+                                  height: MediaQuery.of(context).size.height * 0.7,
+                                  child: EditTableModal(),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: Icon(
+                        Icons.edit,
+                        size: 25 * heightUnit,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               SizedBox(height: 10 * widthUnit),
               Expanded(
@@ -402,6 +414,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       timeSlotViewSettings: TimeSlotViewSettings(
                         timeIntervalWidth: 100 * widthUnit,
                       ),
+                      appointmentTextStyle: TextStyle(
+                      color: Color.fromARGB(255, 69, 69, 69)
+                    ),
                     ),
                   ),
                 ),
@@ -425,7 +440,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   PieChartData(
                     sections: data[1],
                     centerSpaceRadius: 0,
-                    sectionsSpace: 0,
+                    sectionsSpace: 1.5,
                     pieTouchData: PieTouchData(enabled: false),
                   ),
                 ),

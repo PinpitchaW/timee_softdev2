@@ -5,8 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:myapp/page-1/home.dart';
-// import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/utils.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AddNewTableModal extends StatefulWidget {
@@ -92,7 +90,7 @@ class _AddNewTableModalState extends State<AddNewTableModal> {
         child: Column(
           children: [
             Container(
-              width: 228 * widthUnit,
+              // width: 228 * widthUnit,
               height: 30 * heightUnit,
               margin:
                   EdgeInsets.fromLTRB(0, 30 * heightUnit, 0, 30 * heightUnit),

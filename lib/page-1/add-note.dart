@@ -35,8 +35,7 @@ class AddNoteModal extends StatelessWidget {
         height: modalHeight  * heightUnit,
         child: Center(
           child: Container(
-            // addtodolistLxD (31:153)
-            padding: EdgeInsets.fromLTRB(0, 50 * widthUnit, 0, 45 * widthUnit),
+            padding: EdgeInsets.fromLTRB(0, 40 * widthUnit, 0, 20 * widthUnit),
             width: modalWidth,
             height: modalHeight,
             decoration: BoxDecoration(
@@ -49,8 +48,7 @@ class AddNoteModal extends StatelessWidget {
                 Center(
                   // addnoteTG9 (31:162)
                   child: Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * widthUnit, 0 * widthUnit, 0, 36.5 * widthUnit),
+                    margin: EdgeInsets.fromLTRB(0 * widthUnit, 0 * widthUnit, 0, 30 * widthUnit),
                     child: Text(
                       'Add note',
                       textAlign: TextAlign.center,
@@ -65,7 +63,7 @@ class AddNoteModal extends StatelessWidget {
                 ),
                 Container(
                   // autogroupztxbwx1 (GKYiyN2Qru2U1iCKZCzTXB)
-                  margin: EdgeInsets.fromLTRB(30 * widthUnit, 0 * widthUnit, 30 * widthUnit, 52 * widthUnit),
+                  margin: EdgeInsets.fromLTRB(30 * widthUnit, 0 * widthUnit, 30 * widthUnit, 30 * widthUnit),
                   padding: EdgeInsets.fromLTRB(20 * widthUnit, 15 * widthUnit, 20 * widthUnit, 18.5 * widthUnit),
                   width: double.infinity,
                   height: 200 * widthUnit,
