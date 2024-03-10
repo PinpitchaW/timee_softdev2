@@ -1,14 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:myapp/utils.dart';
 import 'signup.dart';
 import 'home.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -54,11 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Material( 
         child: Container(
-          width: screenWidth*widthUnit,
+          width: screenWidth,
           child: Container(
             // main background
-            width: screenWidth*widthUnit,
-            height: screenHeight*widthUnit,
+            width: screenWidth,
+            height: screenHeight,
             decoration: BoxDecoration(
               color: Color(0xff9eb8d9),
             ),

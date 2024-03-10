@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter/widgets.dart';
 import 'dart:ui';
-import 'package:myapp/utils.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class EditTableModal extends StatefulWidget {
   @override
@@ -9,6 +11,18 @@ class EditTableModal extends StatefulWidget {
 }
 
 class _EditTableModalState extends State<EditTableModal> {
+  DateTime selectedDate = DateTime.now();
+  Future<List<Map<String, dynamic>>> getActivityData() async {
+    var data = await Supabase.instance.client
+        .from('activity')
+        .select('*')
+        .eq('user_id', Supabase.instance.client.auth.currentUser!.id)
+        .eq('date', selectedDate)
+        .order('time_from', ascending: true);
+    debugPrint(data.toString());
+    return data;
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = MediaQuery.of(context).size.width;
@@ -18,11 +32,6 @@ class _EditTableModalState extends State<EditTableModal> {
     double widthUnit = MediaQuery.of(context).size.width / 1440;
     double heightUnit = MediaQuery.of(context).size.height / 775;
     double widthUnit2 = widthUnit * 0.97;
-    List<List<String>> tableData = [
-      ["Sleep", "00:00", "09:00"],
-      ["Work", "09:00", "11:00"],
-      ["Eat", "11:00", "12:00"],
-    ];
 
     TextStyle customTextStyle({
       FontWeight fontWeight = FontWeight.w400,
@@ -36,10 +45,10 @@ class _EditTableModalState extends State<EditTableModal> {
       );
     }
 
-    void _showEditModal(String activity) {
+    void _showEditModal(String text, String column, int id) async {
       TextEditingController _textEditingController =
-          TextEditingController(text: activity);
-      showModalBottomSheet(
+          TextEditingController(text: text);
+      var result = await showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
           return Container(
@@ -54,7 +63,7 @@ class _EditTableModalState extends State<EditTableModal> {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.pop(context, _textEditingController.text);
                       },
                       child: Text('Confirm'),
                     ),
@@ -71,87 +80,113 @@ class _EditTableModalState extends State<EditTableModal> {
           );
         },
       );
+      var updateData = await Supabase.instance.client
+          .from("activity")
+          .update({column: result}).eq("id", id);
+      debugPrint(updateData.toString());
+      Navigator.pushReplacementNamed(context, '/home');
     }
 
     return Scaffold(
-      body: Container(
-        // addnewtablePZX (31:117)
-        width: modalWidth,
-        height: modalHeight,
-        padding: EdgeInsets.fromLTRB(20  * widthUnit, 20  *widthUnit, 20  *widthUnit, 20  *widthUnit),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 210, 208, 208),
-          borderRadius: BorderRadius.circular(10  *widthUnit),
-        ),
+      body: FutureBuilder(
+          future: getActivityData(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(child: Text(snapshot.error.toString()));
+            } else if (snapshot.hasData) {
+              var data = snapshot.data!;
+              return Container(
+                // addnewtablePZX (31:117)
+                width: modalWidth,
+                height: modalHeight,
+                padding: EdgeInsets.fromLTRB(20 * widthUnit, 20 * widthUnit,
+                    20 * widthUnit, 20 * widthUnit),
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 210, 208, 208),
+                  borderRadius: BorderRadius.circular(10 * widthUnit),
+                ),
 
-        child: Column(
-          children: [
-            Container(
-              width: 228 * widthUnit,
-              height: 30 * heightUnit,
-              margin:
-                  EdgeInsets.fromLTRB(0, 20 * heightUnit, 0, 10 * heightUnit),
-              child: Text(
-                'Edit table',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30 * widthUnit2,
-                  fontWeight: FontWeight.w700,
-                  height: 1.155 * widthUnit2 / widthUnit,
-                  color: Color(0xff000000),
-                ),
-              ),
-            ),
-             DataTable(
-              columns: [
-                DataColumn(
-                  label: Text('Activities',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25 * widthUnit
-                    ),
-                  )
-                ),
-                DataColumn(
-                  label: Text('From',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25 * widthUnit
-                    ),
-                  )
-                ),
-                DataColumn(
-                  label: Text('To',
-                    style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25 * widthUnit
-                  ),
-                  )
-                ),
-              ],
-              rows: List<DataRow>.generate(
-                tableData.length,
-                (index) => DataRow(
-                  cells: List<DataCell>.generate(
-                    tableData[index].length,
-                    (cellIndex) => DataCell(
-                      GestureDetector(
-                        onTap: () {
-                          _showEditModal(tableData[index][cellIndex]);
-                        },
-                        child: Text(
-                          tableData[index][cellIndex],
-                          style: customTextStyle(),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 228 * widthUnit,
+                      height: 30 * heightUnit,
+                      margin: EdgeInsets.fromLTRB(
+                          0, 20 * heightUnit, 0, 10 * heightUnit),
+                      child: Text(
+                        'Edit table',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 30 * widthUnit2,
+                          fontWeight: FontWeight.w700,
+                          height: 1.155 * widthUnit2 / widthUnit,
+                          color: Color(0xff000000),
                         ),
                       ),
                     ),
-                  ),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: DataTable(
+                          columns: [
+                            DataColumn(
+                                label: Text(
+                              'Activities',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25 * widthUnit),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'From',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25 * widthUnit),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'To',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25 * widthUnit),
+                            )),
+                          ],
+                          rows: data.map<DataRow>((e) {
+                            return DataRow(cells: [
+                              DataCell(GestureDetector(
+                                onTap: () {
+                                  _showEditModal(e["activity_name"],
+                                      "activity_name", e["id"]);
+                                },
+                                child: Text(e["activity_name"]),
+                              )),
+                              DataCell(GestureDetector(
+                                onTap: () {
+                                  _showEditModal(
+                                      e["time_from"], "time_from", e["id"]);
+                                },
+                                child: Text(e["time_from"]),
+                              )),
+                              DataCell(GestureDetector(
+                                onTap: () {
+                                  _showEditModal(
+                                      e["time_to"], "time_to", e["id"]);
+                                },
+                                child: Text(e["time_to"]),
+                              )),
+                            ]);
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
+              );
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }),
     );
   }
 }

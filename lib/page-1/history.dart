@@ -73,7 +73,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
         body: FutureBuilder(
             future: Future.wait([getNote(), getPieChartData()]),
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
+              if (snapshot.hasError){
+                return Center(child : Text(snapshot.error.toString()));
+              }
+              else if (snapshot.hasData) {
                 var data = snapshot.data;
                 return Column(
                 children: [
@@ -250,7 +253,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                           BorderRadius.circular(5 * widthUnit),
                                     ),
                                     child: Text(
-                                      (data![0] as List<Map<String, dynamic>>).map((e) => e["note"]).join("\n\n"),
+                                      (data![0] as List<Map<String, dynamic>>).map((e) =>e["note"]).join("\n\n"),
                                       style: TextStyle(
                                         fontSize: 20 * widthUnit2,
                                         fontWeight: FontWeight.w400,

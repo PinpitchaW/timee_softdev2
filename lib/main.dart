@@ -9,7 +9,6 @@ import 'package:myapp/page-1/signup.dart';
 import 'package:myapp/page-1/to-do-list.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'dart:html' as html;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +42,7 @@ class DailyScheduleApp extends StatelessWidget {
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/login':
-            return MaterialPageRoute(settings: settings, builder: (context) => const AuthenticationRoute(child: LoginScreen()));          
+            return MaterialPageRoute(settings: settings, builder: (context) => AuthenticationRoute(child: LoginScreen()));          
           case '/signup':
             return MaterialPageRoute(settings: settings, builder: (context) => AuthenticationRoute(child: SignupScreen()));          
           case '/home':

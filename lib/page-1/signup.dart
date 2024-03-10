@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/gestures.dart';
-import 'package:myapp/utils.dart';
 import 'login.dart';
 import 'home.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -75,11 +74,11 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: Material(
         child: Container(
-          width: screenWidth * widthUnit,
+          width: screenWidth,
           child: Container(
             // main background
-            width: screenWidth * widthUnit,
-            height: screenHeight * widthUnit,
+            width: screenWidth,
+            height: screenHeight,
             decoration: const BoxDecoration(
               color: Color(0xff9eb8d9),
             ),

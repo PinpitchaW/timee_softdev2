@@ -359,3 +359,14 @@
 //     appointments = source;
 //   }
 // }
+
+
+// GestureDetector(
+//                                 onTap: () {
+//                                   _showEditModal(tableData[index][cellIndex]);
+//                                 },
+//                                 child: Text(
+//                                   tableData[index][cellIndex],
+//                                   style: customTextStyle(),
+//                                 ),
+//                               ),

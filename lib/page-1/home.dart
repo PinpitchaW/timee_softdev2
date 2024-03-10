@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -13,13 +12,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:intl/intl.dart';
 
 const List<Color> colorList = [
-  // Color.fromRGBO(182, 226, 221, 1),
-  // Color.fromRGBO(200, 221, 187, 1),
-  // Color.fromRGBO(233, 229, 175, 1),
-  // Color.fromRGBO(251, 223, 157, 1),
-  // Color.fromRGBO(251, 201, 157, 1),
-  // Color.fromRGBO(251, 179, 157, 1),
-  // Color.fromRGBO(251, 160, 157, 1),
   Color.fromRGBO(125, 208, 198, 1),
   Color.fromRGBO(160, 206, 131, 1),
   Color.fromRGBO(239, 233, 141, 1),
@@ -99,6 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return _DataSource(activityData);
   }
 
+
   @override
   void initState() {
     super.initState();
@@ -128,7 +121,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: FutureBuilder(
         future: Future.wait([getCalendarData(), getPieChartData()]),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasError){
+                return Center(child : Text(snapshot.error.toString()));
+              }
+          else if (snapshot.hasData) {
             return Column(
               children: [
                 NavBar(),
